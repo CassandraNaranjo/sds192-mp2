@@ -1,6 +1,6 @@
 ---
 title: "Mini-Project 2"
-author: "Cassie Naranjo and Amelia Stapleton"
+author: "Cassie Naranjo and Amelia Stapleton fuck this shit"
 date: "2019-03-24"
 output: 
   html_document:
