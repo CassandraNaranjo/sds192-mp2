@@ -1,12 +1,11 @@
 ---
 title: "Mini-Project 2"
-author: "Amelia Stapleton"
+authors: "Amelia Stapleton and Cassie Naranjo"
 date: "2019-03-24"
 output: 
   html_document:
     code_folding: show
 ---
-
 
 ## Loading the data
 
