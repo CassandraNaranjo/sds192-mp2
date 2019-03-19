@@ -17,3 +17,17 @@ load("contributions.rda")
 ```
 
 > Word count: `r wordcountaddin::word_count()`
+
+#Filtering out what we want from candidates data.frame
+```{r}
+new_c <- candidates %>%
+  filter(cand_election_yr == "2016") %>%
+  select(cand_id,cand_election_yr)
+```
+
+#Filtering out what we want from house_elections data.frame
+```{r}
+new_h_e <- house_elections %>%
+  filter(incumbent == "TRUE") %>%
+  select(fec_id, candidate_name, state, incumbent, party, ge_winner)
+```
