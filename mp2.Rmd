@@ -49,13 +49,6 @@ cand_CA <- MP2_table %>%
 num_CA <- cand_CA %>%
   group_by(party, ge_winner) %>%
   summarize(N = n())
-
-ge_CA <- cand_CA %>%
-  group_by(ge_winner) %>%
-  summarize(N = n())
-
-winner_CA <- cand_CA %>%
-  filter(ge_winner == "Y")
 ```
 
 ##New York
@@ -64,11 +57,8 @@ cand_NY <- MP2_table %>%
   filter(state == "NY")
 
 num_NY <- cand_NY %>%
-  group_by(party) %>%
+  group_by(party, ge_winner) %>%
   summarize(N = n()) 
-
-winner_NY <- cand_NY %>%
-  filter(ge_winner == "Y")
 ```
 
 ##Texas
@@ -77,11 +67,8 @@ cand_TX <- MP2_table %>%
   filter(state == "TX")
 
 num_TX <- cand_TX %>%
-  group_by(party) %>%
+  group_by(party, ge_winner) %>%
   summarize(N = n()) 
-
-winner_TX <- cand_TX %>%
-  filter(ge_winner == "Y")
 ```
 
 ##Florida
@@ -90,18 +77,29 @@ cand_FL <- MP2_table %>%
   filter(state == "FL")
 
 num_FL <- cand_FL %>%
-  group_by(party) %>%
+  group_by(party, ge_winner) %>%
   summarize(N = n()) 
-
-winner_FL <- cand_FL %>%
-  filter(ge_winner == "Y")
 ```
 
 ###Making some graphics
-
 ```{r}
 ggplot(data = num_CA, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = N),  position = "stack")
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
+```
 
+```{r}
+ggplot(data = num_NY, aes(x = party, y = N), fill = ge_winner) +
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
+
+```
+
+```{r}
+ggplot(data = num_TX, aes(x = party, y = N), fill = ge_winner) +
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
+```
+
+```{r}
+ggplot(data = num_FL, aes(x = party, y = N), fill = ge_winner) +
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
 ```
 
