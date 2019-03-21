@@ -121,10 +121,9 @@ ggplot(data = num_TX, aes(x = party, y = N), fill = ge_winner) +
 ```{r}
 ggplot(data = num_FL, aes(x = party, y = N), fill = ge_winner) +
   geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
-=======
+```
 
-
-
+=
 ###Trying to create a function for tables 
 ```{r message = FALSE, echo = FALSE}
 table_function <- function(state_arg) {
@@ -155,6 +154,5 @@ plot_function(data_arg = plot_CA)
 plot_function(data_arg = plot_NY)
 plot_function(data_arg = plot_TX)
 plot_function(data_arg = plot_FL)
->>>>>>> fde771d003406f8193c6650b4294fa119e924055
 ```
 
