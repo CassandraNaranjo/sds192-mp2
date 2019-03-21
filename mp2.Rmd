@@ -47,7 +47,7 @@ cand_CA <- MP2_table %>%
   filter(state == "CA")
 
 num_CA <- cand_CA %>%
-  group_by(party) %>%
+  group_by(party, ge_winner) %>%
   summarize(N = n())
 
 ge_CA <- cand_CA %>%
@@ -100,10 +100,8 @@ winner_FL <- cand_FL %>%
 ###Making some graphics
 
 ```{r}
-ggplot(data = num_CA, aes(x = party, y = N)) +
+ggplot(data = num_CA, aes(x = party, y = N), fill = ge_winner) +
   geom_bar(stat = "identity", aes(fill = N),  position = "stack")
 
-ggplot(data = cand_CA, aes(x = party, y = N, fill = ge_winner)) +
-  geom_bar(stat = "identity", aes(fill = N),  position = "stack")
 ```
 
