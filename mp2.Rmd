@@ -44,64 +44,73 @@ MP2_table <- new_h_e %>%
 ##California
 ```{r}
 cand_CA <- MP2_table %>%
-  filter(state == "CA")
-
-num_CA <- cand_CA %>%
+  filter(state == "CA") %>%
   group_by(party, ge_winner) %>%
   summarize(N = n())
-
-ge_CA <- cand_CA %>%
-  group_by(ge_winner) %>%
-  summarize(N = n())
-
-winner_CA <- cand_CA %>%
-  filter(ge_winner == "Y")
 ```
 
 ##New York
 ```{r}
 cand_NY <- MP2_table %>%
-  filter(state == "NY")
-
-num_NY <- cand_NY %>%
-  group_by(party) %>%
-  summarize(N = n()) 
-
-winner_NY <- cand_NY %>%
-  filter(ge_winner == "Y")
+  filter(state == "NY") %>%
+  group_by(party, ge_winner) %>%
+  summarize(N = n())
 ```
 
 ##Texas
 ```{r}
 cand_TX <- MP2_table %>%
-  filter(state == "TX")
-
-num_TX <- cand_TX %>%
-  group_by(party) %>%
-  summarize(N = n()) 
-
-winner_TX <- cand_TX %>%
-  filter(ge_winner == "Y")
+  filter(state == "TX") %>%
+  group_by(party, ge_winner) %>%
+  summarize(N = n())
 ```
 
 ##Florida
 ```{r}
 cand_FL <- MP2_table %>%
-  filter(state == "FL")
-
-num_FL <- cand_FL %>%
-  group_by(party) %>%
-  summarize(N = n()) 
-
-winner_FL <- cand_FL %>%
-  filter(ge_winner == "Y")
+  filter(state == "FL") %>%
+  group_by(party, ge_winner) %>%
+  summarize(N = n())
 ```
-
 ###Making some graphics
 
 ```{r}
-ggplot(data = num_CA, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = N),  position = "stack")
+ggplot(data = cand_CA, aes(x = party, y = N), fill = ge_winner) +
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") 
+```
 
+
+
+
+###Trying to create a function for tables 
+```{r}
+table_function <- function(state_arg) {
+  MP2_table %>%
+     filter(state == state_arg) %>%
+  group_by(party, ge_winner) %>%
+  summarize(N = n())
+}
+```
+
+```{r}
+plot_CA <- table_function(state_arg = "CA")
+plot_NY <- table_function(state_arg = "NY")
+plot_TX <- table_function(state_arg = "TX")
+plot_FL <- table_function(state_arg = "FL")
+```
+
+###Trying to create a function for graphics 
+```{r}
+plot_function <- function(data_arg) {
+  ggplot(data = data_arg, aes(x = party, y = N), fill = ge_winner) +
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") 
+}
+```
+
+```{r}
+plot_function(data_arg = plot_CA)
+plot_function(data_arg = plot_NY)
+plot_function(data_arg = plot_TX)
+plot_function(data_arg = plot_FL)
 ```
 
