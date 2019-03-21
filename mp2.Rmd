@@ -39,3 +39,23 @@ new_h_e <- house_elections %>%
 MP2_table <- new_h_e %>%
   inner_join(new_c, by = c("cand_id" = "cand_id"))
 ```
+
+##Filtering for states
+```{r}
+cand_CA <- MP2_table %>%
+  filter(state == "CA")
+
+cand_NY <- MP2_table %>%
+  filter(state == "NY")
+
+cand_TX <- MP2_table %>%
+  filter(state == "TX")
+
+cand_FL <- MP2_table %>%
+  filter(state == "FL")
+```
+
+##
+
+
+```
