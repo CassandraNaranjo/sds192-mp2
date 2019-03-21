@@ -8,7 +8,7 @@ output:
 ---
 
 ## Loading the data
-```{r, message=FALSE}
+```{r message = FALSE, echo = FALSE}
 library(tidyverse)
 library(dplyr)
 load("house_elections.rda")
@@ -83,7 +83,7 @@ ggplot(data = cand_CA, aes(x = party, y = N), fill = ge_winner) +
 
 
 ###Trying to create a function for tables 
-```{r}
+```{r message = FALSE, echo = FALSE}
 table_function <- function(state_arg) {
   MP2_table %>%
      filter(state == state_arg) %>%
@@ -92,7 +92,7 @@ table_function <- function(state_arg) {
 }
 ```
 
-```{r}
+```{r message = FALSE, echo = FALSE}
 plot_CA <- table_function(state_arg = "CA")
 plot_NY <- table_function(state_arg = "NY")
 plot_TX <- table_function(state_arg = "TX")
