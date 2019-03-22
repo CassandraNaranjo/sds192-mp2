@@ -1,13 +1,12 @@
 ---
 title: "Mini-Project 2"
-authors: "Amelia Stapleton and Cassie Naranjo"
-date: "2019-03-24"
-output: 
-  html_document:
-    code_folding: show
+author: "Amelia Stapleton and Cassie Naranjo"
+date: "3/22/2019"
+output: html_document
+code_folding: show
 ---
 
-```{r message = FALSE, echo = FALSE}
+```{r, message = FALSE, echo = FALSE, warning=FALSE}
 ## Loading the data
 library(tidyverse)
 library(dplyr)
@@ -90,5 +89,3 @@ plot_function(data_arg = plot_TX) +
   annotate("text", x = 1, y = 4, label = "88%", color = "white", size = 8, fontface = 'bold') +
   annotate("text", x = 2, y = 12, label = "95%", color = "white", size = 8, fontface = 'bold')
 ```
-
-> Word count: `r wordcountaddin::word_count()`
