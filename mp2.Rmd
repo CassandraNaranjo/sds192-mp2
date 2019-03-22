@@ -11,6 +11,7 @@ output:
 ```{r message = FALSE, echo = FALSE}
 library(tidyverse)
 library(dplyr)
+library(ggthemes)
 load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
@@ -26,7 +27,8 @@ new_c <- candidates %>%
   select(cand_id,cand_election_yr)
 ```
 
-##Filtering out what we want from house_elections data.frame and mutating to create a common variable
+##Filtering out what we want from house_elections data.frame
+##Mutating to create a common variable
 ```{r}
 new_h_e <- house_elections %>%
   filter(incumbent == "TRUE") %>%
@@ -40,91 +42,7 @@ MP2_table <- new_h_e %>%
   inner_join(new_c, by = c("cand_id" = "cand_id"))
 ```
 
-##Filtering for states
-##California
-```{r}
-cand_CA <- MP2_table %>%
-  filter(state == "CA") %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n())
-```
-
-##New York
-```{r}
-cand_NY <- MP2_table %>%
-<<<<<<< HEAD
-  filter(state == "NY")
-
-num_NY <- cand_NY %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n()) 
-=======
-  filter(state == "NY") %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n())
->>>>>>> fde771d003406f8193c6650b4294fa119e924055
-```
-
-##Texas
-```{r}
-cand_TX <- MP2_table %>%
-<<<<<<< HEAD
-  filter(state == "TX")
-
-num_TX <- cand_TX %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n()) 
-=======
-  filter(state == "TX") %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n())
->>>>>>> fde771d003406f8193c6650b4294fa119e924055
-```
-
-##Florida
-```{r}
-cand_FL <- MP2_table %>%
-  filter(state == "FL") %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n())
-```
-###Making some graphics
-
-```{r}
-ggplot(data = cand_CA, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") 
-```
-
-<<<<<<< HEAD
-num_FL <- cand_FL %>%
-  group_by(party, ge_winner) %>%
-  summarize(N = n()) 
-```
-
-###Making some graphics
-```{r}
-ggplot(data = num_CA, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
-```
-
-```{r}
-ggplot(data = num_NY, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
-
-```
-
-```{r}
-ggplot(data = num_TX, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
-```
-
-```{r}
-ggplot(data = num_FL, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack")
-```
-
-=
-###Trying to create a function for tables 
+###Creating a function for tables 
 ```{r message = FALSE, echo = FALSE}
 table_function <- function(state_arg) {
   MP2_table %>%
@@ -141,18 +59,36 @@ plot_TX <- table_function(state_arg = "TX")
 plot_FL <- table_function(state_arg = "FL")
 ```
 
+```{r}
+fill <- c("#b3cde3", "#fbb4ae")
+```
+
 ###Trying to create a function for graphics 
 ```{r}
 plot_function <- function(data_arg) {
   ggplot(data = data_arg, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") 
+  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") +
+  labs(y = "Number of Incumbent Candidates", x = "Political Party") +
+  scale_fill_manual("Legend", values = c("N" = "blue", "W" = "red")) +
+  scale_x_discrete(breaks = c("D", "R"), labels = c("Democratic", "Republican")) +
+  ggthemes::theme_tufte(plot.title = element_text(size = 25, face = "bold"),
+          axis.ticks.length = (unit(.40, "cm")),
+          axis.text = element_text(size = 18, color = "black"))
 }
 ```
 
+##Creating the graphics
 ```{r}
-plot_function(data_arg = plot_CA)
-plot_function(data_arg = plot_NY)
-plot_function(data_arg = plot_TX)
-plot_function(data_arg = plot_FL)
+plot_function(data_arg = plot_CA) +
+  labs(title = "How Likely is a Candidate from California To Be Reelected?")
+
+plot_function(data_arg = plot_NY) +
+  labs(title = "How Likely is a Candidate from New York To Be Reelected?")
+
+plot_function(data_arg = plot_TX) +
+  labs(title = "How Likely is a Candidate from Texas To Be Reelected?")
+
+plot_function(data_arg = plot_FL) +
+  labs(title = "How Likely is a Candidate from Florida To Be Reelected?")
 ```
 
