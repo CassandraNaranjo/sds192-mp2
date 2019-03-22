@@ -12,6 +12,7 @@ output:
 library(tidyverse)
 library(dplyr)
 library(ggthemes)
+library(RColorBrewer)
 load("house_elections.rda")
 load("candidates.rda")
 load("committees.rda")
@@ -56,39 +57,37 @@ table_function <- function(state_arg) {
 plot_CA <- table_function(state_arg = "CA")
 plot_NY <- table_function(state_arg = "NY")
 plot_TX <- table_function(state_arg = "TX")
-plot_FL <- table_function(state_arg = "FL")
-```
-
-```{r}
-fill <- c("#b3cde3", "#fbb4ae")
 ```
 
 ###Trying to create a function for graphics 
 ```{r}
 plot_function <- function(data_arg) {
-  ggplot(data = data_arg, aes(x = party, y = N), fill = ge_winner) +
-  geom_bar(stat = "identity", aes(fill = ge_winner),  position = "stack") +
+  ggplot(data = data_arg, aes(x = party, y = N, fill = interaction(party, ge_winner))) +
+  geom_bar(stat = "identity", position = "stack") +
   labs(y = "Number of Incumbent Candidates", x = "Political Party") +
-  scale_fill_manual("Legend", values = c("N" = "blue", "W" = "red")) +
+    scale_fill_manual(values = c("#9ecae1", "#fc9272", "#3182bd", "#de2d26"), name = "Condition", labels = c("Democratic Nonwinner", "Republican Nonwinner", "Democratic Winner", "Republican Winner"))+
   scale_x_discrete(breaks = c("D", "R"), labels = c("Democratic", "Republican")) +
-  ggthemes::theme_tufte(plot.title = element_text(size = 25, face = "bold"),
-          axis.ticks.length = (unit(.40, "cm")),
-          axis.text = element_text(size = 18, color = "black"))
+  ggthemes::theme_tufte() +
+  theme(plot.title = element_text(size=18, face='bold'),
+axis.title.x = element_text(size =14), axis.title.y = element_text(size = 14), axis.ticks.length = (unit(.20, "cm")))
 }
+
 ```
 
 ##Creating the graphics
 ```{r}
 plot_function(data_arg = plot_CA) +
-  labs(title = "How Likely is a Candidate from California To Be Reelected?")
+  labs(title = "How Likely is a Candidate from California To Be Re-Elected?") +
+  annotate("text", x = 1, y = 15, label = "87%", color = "white", size = 8, fontface = 'bold') +
+  annotate("text", x = 2, y =7, label = "80%", color = "white", size = 8, fontface = 'bold')
 
 plot_function(data_arg = plot_NY) +
-  labs(title = "How Likely is a Candidate from New York To Be Reelected?")
+  labs(title = "How Likely is a Candidate from New York To Be Re-Elected?") +
+  annotate("text", x = 1, y = 9, label = "94%", color = "white", size = 8, fontface = 'bold') +
+  annotate("text", x = 2, y = 2.5, label = "71%", color = "white", size = 8, fontface = 'bold')
 
 plot_function(data_arg = plot_TX) +
-  labs(title = "How Likely is a Candidate from Texas To Be Reelected?")
-
-plot_function(data_arg = plot_FL) +
-  labs(title = "How Likely is a Candidate from Florida To Be Reelected?")
+  labs(title = "How Likely is a Candidate from Texas To Be Re-Elected?") +
+  annotate("text", x = 1, y = 4, label = "88%", color = "white", size = 8, fontface = 'bold') +
+  annotate("text", x = 2, y = 12, label = "95%", color = "white", size = 8, fontface = 'bold')
 ```
-
