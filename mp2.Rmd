@@ -6,6 +6,12 @@ output:
   html_document:
     code_folding: show
 ---
+Stuff left to do:
++2 for annotating your data wrangling pipeline (this can be in a few sentences in text surrounding the R code chunks, or some informative comments inside the R code chunks)
++2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
++1 for explaining in a single coherent sentence what we can learn from these data
++1 for providing context or background useful in interpreting the graphic
++1 for using a GitHub repository and including a link to it in the footnotes
 
 ```{r, message = FALSE, echo = FALSE}
 ## Loading the data
