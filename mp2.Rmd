@@ -7,8 +7,8 @@ output:
     code_folding: show
 ---
 
-## Loading the data
 ```{r message = FALSE, echo = FALSE}
+## Loading the data
 library(tidyverse)
 library(dplyr)
 library(ggthemes)
@@ -19,32 +19,30 @@ load("committees.rda")
 load("contributions.rda")
 ```
 
-> Word count: `r wordcountaddin::word_count()`
-
+```{r, message = FALSE, echo = FALSE}
 ##Filtering out what we want from candidates data.frame
-```{r}
 new_c <- candidates %>%
   filter(cand_election_yr == "2012") %>%
   select(cand_id,cand_election_yr)
 ```
 
+```{r, message = FALSE, echo = FALSE}
 ##Filtering out what we want from house_elections data.frame
 ##Mutating to create a common variable
-```{r}
 new_h_e <- house_elections %>%
   filter(incumbent == "TRUE") %>%
   mutate(cand_id = fec_id) %>%
   select(cand_id, candidate_name, state, incumbent, party, ge_winner)
 ```
 
-##BRB attempting to join
-```{r}
+```{r, message = FALSE, echo = FALSE}
+##Joining tables
 MP2_table <- new_h_e %>%
   inner_join(new_c, by = c("cand_id" = "cand_id"))
 ```
 
-###Creating a function for tables 
 ```{r message = FALSE, echo = FALSE}
+##Creating a function for tables
 table_function <- function(state_arg) {
   MP2_table %>%
      filter(state == state_arg) %>%
@@ -53,14 +51,15 @@ table_function <- function(state_arg) {
 }
 ```
 
-```{r message = FALSE, echo = FALSE}
+```{r, message = FALSE, echo = FALSE}
+##State Arguments
 plot_CA <- table_function(state_arg = "CA")
 plot_NY <- table_function(state_arg = "NY")
 plot_TX <- table_function(state_arg = "TX")
 ```
 
-###Trying to create a function for graphics 
-```{r}
+```{r, message = FALSE, echo = FALSE}
+##Trying to create a function for graphics 
 plot_function <- function(data_arg) {
   ggplot(data = data_arg, aes(x = party, y = N, fill = interaction(party, ge_winner))) +
   geom_bar(stat = "identity", position = "stack") +
@@ -91,3 +90,5 @@ plot_function(data_arg = plot_TX) +
   annotate("text", x = 1, y = 4, label = "88%", color = "white", size = 8, fontface = 'bold') +
   annotate("text", x = 2, y = 12, label = "95%", color = "white", size = 8, fontface = 'bold')
 ```
+
+> Word count: `r wordcountaddin::word_count()`
