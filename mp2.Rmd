@@ -14,7 +14,8 @@ Stuff left to do:
 +1 for using a GitHub repository and including a link to it in the footnotes
 
 ```{r, message = FALSE, echo = FALSE}
-## Loading the data
+## Here we are loading the libraries and data from the FEC data set that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
+
 library(tidyverse)
 library(dplyr)
 library(ggthemes)
@@ -26,15 +27,17 @@ load("contributions.rda")
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-##Filtering out what we want from candidates data.frame
+##This chunk of code serves to filter out the columns we want from candidates data set. We only want to look at the year 2012 so we are filtering out all the other years and we also need to select for the cand_id in order to create a common variable between this and another data set.
+
+
 new_c <- candidates %>%
   filter(cand_election_yr == "2012") %>%
   select(cand_id,cand_election_yr)
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-##Filtering out what we want from house_elections data.frame
-##Mutating to create a common variable
+## This chunk is filtering out what we want from house_elections data frame. We are only interested in the incumbent = TRUE data, along with the candidate_name, states, party, and whetehr or not the candidate was re-elected. We also needed to mutate cand_id to equal fec_id to create a common variable in order to join the datasets.
+
 new_h_e <- house_elections %>%
   filter(incumbent == "TRUE") %>%
   mutate(cand_id = fec_id) %>%
@@ -42,13 +45,17 @@ new_h_e <- house_elections %>%
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-##Joining tables
+##Here we are joining the two data frames we are interested in using the common variable of cand_id.
+
+
 MP2_table <- new_h_e %>%
   inner_join(new_c, by = c("cand_id" = "cand_id"))
 ```
 
 ```{r message = FALSE, echo = FALSE}
-##Creating a function for tables
+##This chunk serves to create a function to generate tables for different states that will summarize the amount of candidates who were re-elected and who make up each party.
+
+
 table_function <- function(state_arg) {
   MP2_table %>%
      filter(state == state_arg) %>%
@@ -58,14 +65,17 @@ table_function <- function(state_arg) {
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-##State Arguments
+##Here we are plugging in different state arguments into our function to generate plots for each state.
+
+
 plot_CA <- table_function(state_arg = "CA")
 plot_NY <- table_function(state_arg = "NY")
 plot_TX <- table_function(state_arg = "TX")
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-##Trying to create a function for graphics 
+##This chunk is creating a function for each of our data graphics. We wanted to make a stacker bar graphic and have different colors represent democratic winners and losers as well as republican winners and losers.
+
 plot_function <- function(data_arg) {
   ggplot(data = data_arg, aes(x = party, y = N, fill = interaction(party, ge_winner))) +
   geom_bar(stat = "identity", position = "stack") +
@@ -81,7 +91,8 @@ axis.title.x = element_text(size =14), axis.title.y = element_text(size = 14), a
 
 
 ```{r}
-##Creating the graphics
+##Here we are using the function to create the graphics for California, New York, and Texas. We also wanted to display the percentages of the winners for each party in each state data graphic to make the graphic easier to understand.
+
 plot_function(data_arg = plot_CA) +
   labs(title = "How Likely is a Candidate from California To Be Re-Elected?") +
   annotate("text", x = 1, y = 15, label = "87%", color = "white", size = 8, fontface = 'bold') +
