@@ -15,7 +15,7 @@ Using the Federal Election Comission data, we wanted to look at variations incum
 
 **What can we learn from these data graphics?**
 
-These graphics can tell us how likely a candidate who is already in office in New York, California, or Texas would be to be re-elected in their respective state and whether or not that differs between democrats and republicians.
+These graphics can tell us how likely a candidate who was already in office in New York, California, or Texas was to be re-elected in their respective state in the 2011 - 2012 election cycle and whether or not that differs between democrats and republicians.
 
 
 ```{r, message = FALSE, echo = FALSE}
@@ -93,7 +93,7 @@ axis.title.x = element_text(size =14), axis.title.y = element_text(size = 14), a
 ```
 
 **Data Graphics:**
-We used used a plot function to create the graphics for California, New York, and Texas. The x-axis is displaying the political parties, democratic and republican, whereas the y-axis is displaying the number of incumbent candidates. The key on the righthandside displays the combinations of conditions this data graphic is displaying along with the colors that represent them. We also used an annotation feature to display the percentages of the winners for each party in each state data graphic to make the graphic easier to understand.
+We created a plot function to generate the following graphics for California, New York, and Texas. On the bar plots, the x-axis is displaying the political parties, Democratic and Republican, and the y-axis is displaying the number of incumbent candidates. The key on the righthandside displays the combinations of conditions this data graphic is displaying along with the colors that represent them. We also used an annotation feature to display on the data graphic the percentages of the winners for each party in each state to highligh what each graphic tells us.
 
 ```{r}
 plot_function(data_arg = plot_CA) +
@@ -103,7 +103,7 @@ plot_function(data_arg = plot_CA) +
 ```
 
 
-*Results: This plot tells us that there are more incumbent democratic candidates in California and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 87% likely to be re-elected whereas Republican imcumbent candidates were 80% likely.*
+*Results: This plot tells us that there are more incumbent democratic candidates in California and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent Democratic candidates were 87% likely to be re-elected whereas Republican incumbent candidates were 80% likely.*
 
 ```{r}
 plot_function(data_arg = plot_NY) +
@@ -113,7 +113,7 @@ plot_function(data_arg = plot_NY) +
 ```
 
 
-*Results: This plot tells us that are also more incumbent democratic candidates in New York and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 94% likely to be re-elected whereas Republican imcumbent candidates were 71% likely.*
+*Results: This plot tells us that are also more incumbent Democratic candidates than incumbent Republican candidates in New York and that these incumbent candidates were also more likely to be re-elected in the general election compared to Republican incumbent candidates. Incumbent Democratic candidates were 94% likely to be re-elected whereas Republican imcumbent candidates were 71% likely.*
 
 ```{r}
 plot_function(data_arg = plot_TX) +
@@ -123,11 +123,15 @@ plot_function(data_arg = plot_TX) +
 ```
 
 
-*Results: This plot tells us that are more incumbent republican candidates in Texas and that these incumbent candidates were more likely to be re-elected in the general election compared to democratic incumbent candidates. Incumbent republican candidates were 95% likely to be re-elected whereas Democratic imcumbent candidates were only 88% likely.*
+*Results: This plot tells us that are more incumbent Republican candidates in Texas than incumbent Democratic candidates and that they were more likely to be re-elected in the general election compared to Democratic incumbent candidates. Incumbent Republican candidates were 95% likely to be re-elected whereas Democratic imcumbent candidates were only 88% likely.*
 
 **Overall Conclusions**
 
+<<<<<<< HEAD
 When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that once a candidate held office in 2012, he or she had a better chance of keeping their seat.
+=======
+When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were more likely to be re-elected in 2012 than the non-incumbant candidates. Therefore, one can conclude that once a candidate holds office, he or she is has a better chance of keeping their seat in future elections.
+>>>>>>> 132d4d2fe5b1414f1427b29ad6d7e66e302428ba
 
 *Word Count*
 ```{r, message = FALSE, echo = FALSE}
