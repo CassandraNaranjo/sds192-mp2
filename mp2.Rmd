@@ -18,10 +18,10 @@ Using the Federal Election Comission data, we wanted to look at variations incum
 These graphics can tell us how likely a candidate who was already in office in New York, California, or Texas was to be re-elected in their respective state in the 2011 - 2012 election cycle and whether or not that differs between democrats and republicians.
 
 
-```{r, message = FALSE, echo = FALSE}
+```{r, message = FALSE, echo = FALSE, warning=FALSE}
 ## Loading the data
 
-## Here we are loading the libraries and data from the FEC data set that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
+## Here we are loading the libraries and data from the FEC data sets that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
 
 library(tidyverse)
 library(dplyr)
@@ -126,12 +126,7 @@ plot_function(data_arg = plot_TX) +
 *Results: This plot tells us that are more incumbent Republican candidates in Texas than incumbent Democratic candidates and that they were more likely to be re-elected in the general election compared to Democratic incumbent candidates. Incumbent Republican candidates were 95% likely to be re-elected whereas Democratic imcumbent candidates were only 88% likely.*
 
 **Overall Conclusions**
-
-<<<<<<< HEAD
-When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that once a candidate held office in 2012, he or she had a better chance of keeping their seat.
-=======
 When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were more likely to be re-elected in 2012 than the non-incumbant candidates. Therefore, one can conclude that once a candidate holds office, he or she is has a better chance of keeping their seat in future elections.
->>>>>>> 132d4d2fe5b1414f1427b29ad6d7e66e302428ba
 
 *Word Count*
 ```{r, message = FALSE, echo = FALSE}
