@@ -127,7 +127,7 @@ plot_function(data_arg = plot_TX) +
 
 **Overall Conclusions**
 
-When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that once a candidate holds office, he or she is has a better chance of keeping their seat in future elections.
+When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that once a candidate held office in 2012, he or she had a better chance of keeping their seat.
 
 *Word Count*
 ```{r, message = FALSE, echo = FALSE}
