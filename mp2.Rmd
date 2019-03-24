@@ -13,21 +13,27 @@ output:
 >>>>>>> a44bc8bf1c9e51dab671b564494d9efd0a76dea9
 ---
 Stuff left to do:
-+2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
-+1 for explaining in a single coherent sentence what we can learn from these data
-+1 for providing context or background useful in interpreting the graphic
-+1 for using a GitHub repository and including a link to it in the footnotes
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 ```{r, message = FALSE, echo = FALSE, warning=FALSE}
 =======
 =======
 **Background (500 words):**
+=======
+- +2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
+>>>>>>> 4bf2828bc151d0ec96bfe9617ffa5bf891d1f08d
 
+- +1 for explaining in a single coherent sentence what we can learn from these data
 
+- +1 for providing context or background useful in interpreting the graphic
 
+- +1 for using a GitHub repository and including a link to it in the footnotes
 
+**Background (500 words):**
+Background on the dataset
+Background on our methods of subsetting the data
 
 
 >>>>>>> e4cea273528e5cad5521dcc2ba6f68eb3fd7e1d0
@@ -112,10 +118,8 @@ axis.title.x = element_text(size =14), axis.title.y = element_text(size = 14), a
 
 ```
 
-
+We used used a plot function we created to create the graphics for California, New York, and Texas. We also wanted to display the percentages of the winners for each party in each state data graphic to make the graphic easier to understand.
 ```{r}
-##Here we are using the function to create the graphics for California, New York, and Texas. We also wanted to display the percentages of the winners for each party in each state data graphic to make the graphic easier to understand.
-
 plot_function(data_arg = plot_CA) +
   labs(title = "How Likely is a Candidate from California To Be Re-Elected?") +
   annotate("text", x = 1, y = 15, label = "87%", color = "white", size = 8, fontface = 'bold') +
@@ -135,3 +139,5 @@ plot_function(data_arg = plot_TX) +
 **So you may be wondering right now, what can we learn from these graphics?**
 
 Well... 
+
+**install word count add in package....**
