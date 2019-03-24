@@ -10,7 +10,7 @@ date: "2019-03-24"
 output: 
   html_document:
     code_folding: show
->>>>>>> a44bc8bf1c9e51dab671b564494d9efd0a76dea9
+
 ---
 Stuff left to do:
 
@@ -18,12 +18,9 @@ Stuff left to do:
 <<<<<<< HEAD
 <<<<<<< HEAD
 ```{r, message = FALSE, echo = FALSE, warning=FALSE}
-=======
-=======
-**Background (500 words):**
-=======
+
+**Background (500 words):
 - +2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
->>>>>>> 4bf2828bc151d0ec96bfe9617ffa5bf891d1f08d
 
 - +1 for explaining in a single coherent sentence what we can learn from these data
 
@@ -34,17 +31,15 @@ Stuff left to do:
 **Background (500 words):**
 Background on the dataset
 Background on our methods of subsetting the data
+```
 
-
->>>>>>> e4cea273528e5cad5521dcc2ba6f68eb3fd7e1d0
 ```{r, message = FALSE, echo = FALSE}
-<<<<<<< HEAD
->>>>>>> a44bc8bf1c9e51dab671b564494d9efd0a76dea9
+HEAD
+
 ## Loading the data
-=======
+
 ## Here we are loading the libraries and data from the FEC data set that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
 
->>>>>>> 4b4e43bf81ff6c0c6e7609643c47b3e32a9f768a
 library(tidyverse)
 library(dplyr)
 library(ggthemes)
@@ -140,4 +135,10 @@ plot_function(data_arg = plot_TX) +
 
 Well... 
 
+^[https://github.com/CassandraNaranjo/sds192-mp2.git].
+
 **install word count add in package....**
+```{r}
+wordcountaddin::word_count()
+```
+
