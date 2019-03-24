@@ -1,13 +1,25 @@
 ---
 title: "Mini-Project 2"
 author: "Amelia Stapleton and Cassie Naranjo"
+<<<<<<< HEAD
+date: "3/22/2019"
+output: html_document
+code_folding: show
+=======
 date: "2019-03-24"
 output: 
   html_document:
     code_folding: show
+
 ---
 Stuff left to do:
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+```{r, message = FALSE, echo = FALSE, warning=FALSE}
+
+**Background (500 words):
 - +2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
 
 - +1 for providing context or background useful in interpreting the graphic
@@ -17,11 +29,19 @@ Stuff left to do:
 **Background (500 words):**
 Background on the dataset
 Background on our methods of subsetting the data
+<<<<<<< HEAD
 
 **So you may be wondering right now, what can we learn from these graphics?**
 These data graphics can tell us how likely a candidate who is already in office would be to win again in their respective state and whether or not that differs between democrats and republicians.
+=======
+```
+>>>>>>> 5740a925be44eafc23f54bc5e22688aa1ba56c3c
 
 ```{r, message = FALSE, echo = FALSE}
+HEAD
+
+## Loading the data
+
 ## Here we are loading the libraries and data from the FEC data set that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
 
 library(tidyverse)
@@ -122,3 +142,13 @@ plot_function(data_arg = plot_TX) +
 
 **General Results: When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that they have a better chance of keeping their seat compared to someone else who running for their seat.**
 
+<<<<<<< HEAD
+=======
+^[https://github.com/CassandraNaranjo/sds192-mp2.git].
+
+**install word count add in package....**
+```{r}
+wordcountaddin::word_count()
+```
+
+>>>>>>> 5740a925be44eafc23f54bc5e22688aa1ba56c3c
