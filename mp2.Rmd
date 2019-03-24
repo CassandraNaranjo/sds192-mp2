@@ -9,6 +9,7 @@ code_folding: show
 **Background (500 words):**
 The data graphics below depict data from the Federal Election Commission and represent the 2011–2012 federal election cycle.
 
+All data in this project was provided by the Federal Election Commission (FEC), who, among other things, makes campaign finance information assessible to the public. On their website one can find files which contain finance data on all committees, campaigns, and candidates for each election cycle. 
 
 Using the Federal Election Comission data, we wanted to look at variations incumbency re-election of candidates. In order to do this using these two data tables, House Elections and Candidates, we filtered, selected, and mutated the data to produce data graphics that would tell us how likley a candidate would be to be re-elected.
 
