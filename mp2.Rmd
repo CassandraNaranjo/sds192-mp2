@@ -1,45 +1,23 @@
 ---
 title: "Mini-Project 2"
 author: "Amelia Stapleton and Cassie Naranjo"
-<<<<<<< HEAD
 date: "3/22/2019"
 output: html_document
 code_folding: show
-=======
-date: "2019-03-24"
-output: 
-  html_document:
-    code_folding: show
-
 ---
-Stuff left to do:
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-```{r, message = FALSE, echo = FALSE, warning=FALSE}
-
-**Background (500 words):
-- +2 for having at least 500 words and no more than 800 words (use the word count add-in in the template)
-
-- +1 for providing context or background useful in interpreting the graphic
-
-- +1 for using a GitHub repository and including a link to it in the footnotes
 
 **Background (500 words):**
+The data graphics below depict data from the Federal Election Commission and and represent the 2011–2012 federal election cycle.
 Background on the dataset
 Background on our methods of subsetting the data
-<<<<<<< HEAD
 
-**So you may be wondering right now, what can we learn from these graphics?**
-These data graphics can tell us how likely a candidate who is already in office would be to win again in their respective state and whether or not that differs between democrats and republicians.
-=======
-```
->>>>>>> 5740a925be44eafc23f54bc5e22688aa1ba56c3c
+
+**What can we learn from these data graphics?**
+
+These graphics can tell us how likely a candidate who is already in office would be to be re-elected in their respective state and whether or not that differs between democrats and republicians.
+
 
 ```{r, message = FALSE, echo = FALSE}
-HEAD
-
 ## Loading the data
 
 ## Here we are loading the libraries and data from the FEC data set that we need to create our data graphic. We will use the tidyverse ggplot features, dplyr features to wrangle the data, ggthemes to make our graphic more aestheically pleasing, and RColorBrewer to load in specific colors into our graphic.
@@ -74,14 +52,12 @@ new_h_e <- house_elections %>%
 ```{r, message = FALSE, echo = FALSE}
 ##Here we are joining the two data frames we are interested in using the common variable of cand_id.
 
-
 MP2_table <- new_h_e %>%
   inner_join(new_c, by = c("cand_id" = "cand_id"))
 ```
 
 ```{r message = FALSE, echo = FALSE}
 ##This chunk serves to create a function to generate tables for different states that will summarize the amount of candidates who were re-elected and who make up each party.
-
 
 table_function <- function(state_arg) {
   MP2_table %>%
@@ -109,20 +85,24 @@ plot_function <- function(data_arg) {
     scale_fill_manual(values = c("#9ecae1", "#fc9272", "#3182bd", "#de2d26"), name = "Condition", labels = c("Democratic Nonwinner", "Republican Nonwinner", "Democratic Winner", "Republican Winner"))+
   scale_x_discrete(breaks = c("D", "R"), labels = c("Democratic", "Republican")) +
   ggthemes::theme_tufte() +
-  theme(plot.title = element_text(size=16.5, face='bold'),
+  theme(plot.title = element_text(size=15.5, face='bold'),
 axis.title.x = element_text(size =14), axis.title.y = element_text(size = 14), axis.ticks.length = (unit(.20, "cm")))
 }
 
 ```
 
+**Data Graphics:**
 We used used a plot function to create the graphics for California, New York, and Texas. The x-axis is displaying the political parties, democratic and republican, whereas the y-axis is displaying the number of incumbent candidates. The key on the righthandside displays the combinations of conditions this data graphic is displaying along with the colors that represent them. We also used an annotation feature to display the percentages of the winners for each party in each state data graphic to make the graphic easier to understand.
+
 ```{r}
 plot_function(data_arg = plot_CA) +
   labs(title = "How Likely is a Candidate from California To Be Re-Elected? (2012)") +
   annotate("text", x = 1, y = 15, label = "87%", color = "white", size = 8, fontface = 'bold') +
   annotate("text", x = 2, y =7, label = "80%", color = "white", size = 8, fontface = 'bold')
 ```
-**Results: This plot tells us that there are more incumbent democratic candidates in California and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 87% likely to be re-elected whereas Republican imcumbent candidates were 80% likely.**
+
+
+*Results: This plot tells us that there are more incumbent democratic candidates in California and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 87% likely to be re-elected whereas Republican imcumbent candidates were 80% likely.*
 
 ```{r}
 plot_function(data_arg = plot_NY) +
@@ -130,7 +110,9 @@ plot_function(data_arg = plot_NY) +
   annotate("text", x = 1, y = 9, label = "94%", color = "white", size = 8, fontface = 'bold') +
   annotate("text", x = 2, y = 2.5, label = "71%", color = "white", size = 8, fontface = 'bold')
 ```
-**Results: This plot tells us that are also more incumbent democratic candidates in New York and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 94% likely to be re-elected whereas Republican imcumbent candidates were 71% likely.**
+
+
+*Results: This plot tells us that are also more incumbent democratic candidates in New York and that these incumbent candidates were also more likely to be re-elected in the general election compared to republican incumbent candidates. Incumbent democratic candidates were 94% likely to be re-elected whereas Republican imcumbent candidates were 71% likely.*
 
 ```{r}
 plot_function(data_arg = plot_TX) +
@@ -138,17 +120,17 @@ plot_function(data_arg = plot_TX) +
   annotate("text", x = 1, y = 4, label = "88%", color = "white", size = 8, fontface = 'bold') +
   annotate("text", x = 2, y = 12, label = "95%", color = "white", size = 8, fontface = 'bold')
 ```
-**Results: This plot tells us that are more incumbent republican candidates in Texas and that these incumbent candidates were more likely to be re-elected in the general election compared to democratic incumbent candidates. Incumbent republican candidates were 95% likely to be re-elected whereas Democratic imcumbent candidates were only 88% likely.**
 
-**General Results: When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that they have a better chance of keeping their seat compared to someone else who running for their seat.**
 
-<<<<<<< HEAD
-=======
-^[https://github.com/CassandraNaranjo/sds192-mp2.git].
+*Results: This plot tells us that are more incumbent republican candidates in Texas and that these incumbent candidates were more likely to be re-elected in the general election compared to democratic incumbent candidates. Incumbent republican candidates were 95% likely to be re-elected whereas Democratic imcumbent candidates were only 88% likely.*
 
-**install word count add in package....**
-```{r}
+**Overall Conclusions**
+
+When looking at all of these plots in unison, it is very clear that regardless of party, incumbent candidates were very likely to be re-elected in 2012. Therefore, one can conclude that they have a better chance of keeping their seat compared to someone else who running for their seat.
+
+*Word Count*
+```{r, message = FALSE, echo = FALSE}
+##Word Count
 wordcountaddin::word_count()
 ```
 
->>>>>>> 5740a925be44eafc23f54bc5e22688aa1ba56c3c
